@@ -17,10 +17,12 @@ if os.path.isfile(os.path.join(FLAGS.data_dir, 'calibration_full.json')):
     cam_ssn_list = sorted(list(cam_data.keys()))
     open(os.path.join(FLAGS.data_dir, 'cam_ssns.txt'), 'w').write('\n'.join(cam_ssn_list))
     
-    if os.path.isfile(os.path.join(FLAGS.data_dir, 'whole.pt')):
+    if os.path.isfile(os.path.join(FLAGS.data_dir, 'smpl_params.npz')):
         dataset_train    = DatasetSMPL(FLAGS.data_dir, None, FLAGS, validate=False)
-    else:
+    elif os.path.isfile(os.path.join(FLAGS.data_dir, 'merged.pkl')):
         dataset_train    = DatasetSynthetic(FLAGS.data_dir, None, FLAGS, validate=False)
+    else:
+        assert False, "No SMPL-X poses in the data directory!"
 
 os.makedirs('/tmp', exist_ok=True)
 np.save('/tmp/beta.npy', FLAGS.beta)
