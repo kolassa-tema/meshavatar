@@ -1,5 +1,5 @@
 {
-    "data_dir": "/data/yushuo/data/zzr_fullbody_20221130_01_2k/data.5",
+    "data_dir": "data/avatarrex_lbn1",
     "random_textures": true,
     "iter": 100000,
     "save_interval": 1000,
@@ -25,7 +25,7 @@
     "normal_supervised": false,
     "dataset_name": "zzr_smplx",
 
-    "smpl_file_path": "/data/yushuo/smpl_models/smplx_10/SMPLX_NEUTRAL.npz",
+    "smpl_file_path": "/workspace/smpl_models/smplx/SMPLX_NEUTRAL.npz",
     "cam_num": 16,
     "ratio": 1.0,
     "first_frame": 0,

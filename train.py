@@ -410,7 +410,7 @@ if __name__ == "__main__":
     os.makedirs(FLAGS.out_dir, exist_ok=True)
     os.system('cp %s %s' % (FLAGS.config, os.path.join(FLAGS.out_dir, 'exp.json')))
 
-    glctx = dr.RasterizeGLContext()
+    glctx = dr.RasterizeCudaContext()
 
     # ==============================================================================================
     #  Create data pipeline
@@ -450,12 +450,12 @@ if __name__ == "__main__":
     #  Use DMtets to create geometry
     # ==============================================================================================
 
-    # Setup geometry for optimization
+    print("Setup geometry for optimization")
     geometry = DMTetGeometry(FLAGS.dmtet_grid, FLAGS.mesh_scale, FLAGS)
-
+    print("done. doing initial guess")
     # Setup textures, make initial guess from reference if possible
     mat = train_utils.initial_guess_material(geometry, True, FLAGS)
-
+    print("done.")
     if FLAGS.resume is not None:
         model = torch.load(FLAGS.resume)
         lgt.load_state_dict(model['lighting'])
@@ -465,7 +465,7 @@ if __name__ == "__main__":
         # geometry.forward_deformer.deformation_net.reinitialize()
         # geometry.subdivide()
 
-    # Run optimization
+    print("Run optimization")
     geometry, mat = optimize_mesh(glctx, geometry, mat, lgt, dataset_train, dataset_validate, 
                     FLAGS, denoiser, pass_idx=0, pass_name="dmtet_pass1", warmup_iter=FLAGS.warmup_iter, 
                     log_interval=FLAGS.log_interval, optimize_light=FLAGS.learn_light)

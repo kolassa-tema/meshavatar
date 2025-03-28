@@ -2,6 +2,6 @@
 out
 log
 debug
-PoissonRecon*
 data_preprocessing/diffused_skinning/lbs_surf_grad
 data/data_templates*
+data/avatar*

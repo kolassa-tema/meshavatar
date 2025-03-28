@@ -9,7 +9,7 @@ from .smpl_np import SMPLModel as SmplNumpy
 
 dataset_name, smpl_dir = sys.argv[-2], sys.argv[-1]
 
-with open(os.path.join(smpl_dir, 'smplx_10/SMPLX_NEUTRAL.pkl'), 'rb') as f:
+with open(os.path.join(smpl_dir, 'smplx/SMPLX_NEUTRAL.pkl'), 'rb') as f:
     model = pickle.load(f, encoding='latin1')
 
 gender = 'NEUTRAL'

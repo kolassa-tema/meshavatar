@@ -186,7 +186,7 @@ if __name__ == "__main__":
 
     train_first_frame, train_last_frame = FLAGS.first_frame, FLAGS.last_frame
     FLAGS.first_frame, FLAGS.last_frame = 0, 2000
-    glctx = dr.RasterizeGLContext()
+    glctx = dr.RasterizeCudaContext()
     if os.path.isfile(os.path.join(FLAGS.data_dir, 'calibration_full.json')):
         FLAGS.cam_ids_to_use = list(range(FLAGS.cam_num))
         dataset = TestDatasetSynthetic(FLAGS.data_dir, glctx, FLAGS, real=False)

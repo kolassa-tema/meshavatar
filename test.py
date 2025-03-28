@@ -184,7 +184,7 @@ if __name__ == "__main__":
 
     train_first_frame, train_last_frame = FLAGS.first_frame, FLAGS.last_frame
     FLAGS.first_frame, FLAGS.last_frame = 0, 2000
-    glctx = dr.RasterizeGLContext()
+    glctx = dr.RasterizeCudaContext()
     if os.path.isfile(os.path.join(FLAGS.data_dir, 'calibration_full.json')):
         dataset = TestDatasetSMPL(FLAGS.data_dir, glctx, FLAGS)
     elif os.path.isfile(os.path.join(FLAGS.data_dir, 'calibration.csv')):
